@@ -1,0 +1,33 @@
+# macOS system files
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+env/
+venv/
+**/venv/**
+*.egg-info/
+
+# Node.js
+node_modules/
+**/node_modules/**
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+
+# Git
+.git/
