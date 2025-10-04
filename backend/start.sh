@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ChatGPT Clone Backend Startup Script
+# Clompanion AI Backend Startup Script
 
-echo "🚀 Starting ChatGPT Clone Backend..."
+echo "🚀 Starting Clompanion AI Backend..."
 
 # Check if Python is installed
 if ! command -v python3 &> /dev/null; then

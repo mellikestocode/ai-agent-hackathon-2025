@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ChatGPT Clone Frontend Startup Script
+# Clompanion AI Frontend Startup Script
 
-echo "🚀 Starting ChatGPT Clone Frontend..."
+echo "🚀 Starting Clompanion AI Frontend..."
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then

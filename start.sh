@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ChatGPT Clone - Complete Application Startup Script
+# Clompanion AI - Complete Application Startup Script
 
-echo "🎉 ChatGPT Clone - Starting Complete Application"
+echo "🎉 Clompanion AI - Starting Complete Application"
 echo "=============================================="
 echo ""
 

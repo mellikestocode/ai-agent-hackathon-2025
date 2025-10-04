@@ -110,7 +110,7 @@ function App() {
     <div className="App">
       <div className="chat-container">
         <div className="chat-header">
-          <h1>ChatGPT Clone</h1>
+          <h1>Clompanion AI</h1>
           <button onClick={clearChat} className="clear-button">
             Clear Chat
           </button>
@@ -119,7 +119,7 @@ function App() {
         <div className="messages-container">
           {messages.length === 0 ? (
             <div className="welcome-message">
-              <h2>Welcome to ChatGPT Clone!</h2>
+              <h2>Welcome to Clompanion AI!</h2>
               <p>Start a conversation by typing a message below.</p>
             </div>
           ) : (

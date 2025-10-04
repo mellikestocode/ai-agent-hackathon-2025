@@ -25,7 +25,7 @@ MOCK_RESPONSES = [
 @app.route('/', methods=['GET'])
 def health_check():
     """Health check endpoint"""
-    return jsonify({"status": "healthy", "message": "ChatGPT Clone API is running!"})
+    return jsonify({"status": "healthy", "message": "Clompanion AI API is running!"})
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -136,7 +136,7 @@ def generate_ai_response(user_message, conversation_history):
         return random.choice(MOCK_RESPONSES) + f" You mentioned: '{user_message}' - that's definitely worth exploring further!"
 
 if __name__ == '__main__':
-    print("Starting ChatGPT Clone Backend...")
+    print("Starting Clompanion AI Backend...")
     print("API will be available at: http://localhost:5000")
     print("Health check: http://localhost:5000/")
     app.run(debug=True, host='0.0.0.0', port=5000)
