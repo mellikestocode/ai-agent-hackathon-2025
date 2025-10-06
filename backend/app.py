@@ -3,6 +3,8 @@ from flask_cors import CORS
 import time
 import uuid
 import random
+from openai import OpenAI
+import json
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all domains on all routes
@@ -10,17 +12,7 @@ CORS(app)  # Enable CORS for all domains on all routes
 # In-memory storage for chat sessions (in production, use a database)
 chat_sessions = {}
 
-# Mock AI responses for demonstration
-MOCK_RESPONSES = [
-    "That's an interesting question! Let me think about that for a moment.",
-    "I understand what you're asking. Here's my perspective on that topic.",
-    "Based on what you've shared, I think there are a few ways to approach this.",
-    "That's a great point! Let me elaborate on that idea.",
-    "I can help you with that. Here are some suggestions:",
-    "From my understanding, this is a common question that many people have.",
-    "Let me break this down for you in a clear and helpful way.",
-    "That's exactly the kind of question I love to help with!",
-]
+client = OpenAI()
 
 @app.route('/', methods=['GET'])
 def health_check():
@@ -57,9 +49,12 @@ def chat():
             'timestamp': time.time()
         }
         chat_sessions[session_id]['messages'].append(user_msg)
+
+        # TODO: Grab patient medical record
+        medical_history = fetch_medical_record()  # Placeholder
         
-        # Generate AI response (mock)
-        ai_response = generate_ai_response(user_message, chat_sessions[session_id]['messages'])
+        # TODO: Generate AI response
+        ai_response = generate_ai_response(user_message, medical_history, chat_sessions[session_id]['messages'])
         
         ai_msg = {
             'id': str(uuid.uuid4()),
@@ -110,33 +105,24 @@ def get_sessions():
     
     return jsonify({'sessions': sessions})
 
-def generate_ai_response(user_message, conversation_history):
+def fetch_medical_record():
+    """Fetch mock medical record"""
+    with open('mock_medical_record.json', 'r') as file:
+        medical_record = json.load(file)
+    return medical_record
+
+def generate_ai_response(user_message, medical_history, conversation_history):
     """Generate a mock AI response"""
-    # Simple mock response generation
-    user_message_lower = user_message.lower()
+    response = client.responses.create(
+        model="gpt-5-mini",
+        input=user_message.lower()
+    )
+    return response.output_text
+
     
-    # Context-aware responses
-    if 'hello' in user_message_lower or 'hi' in user_message_lower:
-        return "Hello! I'm here to help you with any questions or tasks you have. What would you like to talk about?"
-    
-    elif 'how are you' in user_message_lower:
-        return "I'm doing great, thank you for asking! I'm here and ready to help you with whatever you need."
-    
-    elif 'what is' in user_message_lower or 'define' in user_message_lower:
-        return f"Great question about '{user_message}'. Let me provide you with a comprehensive explanation based on what I know."
-    
-    elif 'help' in user_message_lower:
-        return "I'd be happy to help! I can assist with answering questions, explaining concepts, helping with problems, or just having a conversation. What specific area would you like help with?"
-    
-    elif '?' in user_message:
-        base_response = random.choice(MOCK_RESPONSES)
-        return f"{base_response} Regarding your question: '{user_message}' - this is something I can definitely help clarify for you."
-    
-    else:
-        return random.choice(MOCK_RESPONSES) + f" You mentioned: '{user_message}' - that's definitely worth exploring further!"
 
 if __name__ == '__main__':
     print("Starting Clompanion AI Backend...")
     print("API will be available at: http://localhost:5000")
-    print("Health check: http://localhost:5000/")
+    print("Health check: http://localhost:5555/")
     app.run(debug=True, host='0.0.0.0', port=5000)

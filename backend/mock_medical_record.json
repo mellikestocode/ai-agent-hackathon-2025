@@ -1,0 +1,59 @@
+{
+  "patientId": "1234567890",
+  "fullName": "John Doe",
+  "dateOfBirth": "1985-03-15",
+  "gender": "Male",
+  "address": "123 Main Street, Anytown, CA 91234",
+  "phoneNumber": "(555) 123-4567",
+  "email": "john.doe@example.com",
+  "insuranceProvider": "Blue Cross Blue Shield",
+  "insurancePolicyNumber": "1234567890",
+  "medicalHistory": [
+    {
+      "diagnosis": "Seasonal Allergies",
+      "startDate": "2020-04-01",
+      "endDate": "2020-10-31",
+      "treatments": ["Antihistamines", "Nasal Corticosteroids"]
+    },
+    {
+      "diagnosis": "Type 2 Diabetes",
+      "startDate": "2022-01-15",
+      "endDate": "present",
+      "treatments": ["Metformin", "Lifestyle modifications"]
+    },
+    {
+      "diagnosis": "Hypertension",
+      "startDate": "2023-05-01",
+      "endDate": "present",
+      "treatments": ["Lisinopril", "Lifestyle modifications"]
+    }
+  ],
+  "allergies": [
+    "Penicillin",
+    "Aspirin"
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dosage": "500mg twice daily",
+      "startDate": "2022-02-01",
+      "reason": "Type 2 Diabetes"
+    },
+    {
+      "name": "Lisinopril",
+      "dosage": "10mg once daily",
+      "startDate": "2023-05-15",
+      "reason": "Hypertension"
+    }
+  ],
+  "immunizations": [
+    {
+      "name": "MMR",
+      "date": "2000-03-15"
+    },
+    {
+      "name": "Influenza",
+      "date": "2022-10-25"
+    }
+  ]
+}
